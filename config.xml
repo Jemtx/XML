@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<widget xmlns = "http://www.w3.org/ns/widgets"
+    xmlns:gap = "http://phonegap.com/ns/1.0"
+    id        = "com.jemtx.xml"
+    version   = "1.0.0">
+
+<name>XML Test</name>
+
+<description>
+A simple PhoneGap Build application testing XML.
+</description>
+
+<author href="http://jemtx.com" email="info@jemtx.com">
+Test Developer
+</author>
+
+</widget>

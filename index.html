@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>HCRad App</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1"> 
+
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.css" />
+
+<script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+$.ajax({
+type: "GET",
+url: "hippocamp.xml",
+dataType: "xml",
+success: function(xml) {
+
+var container = document.getElementById("catalogue");
+container.setAttribute('data-role', 'collapsible-set');
+
+$(xml).find('release').each(function(){
+var release = document.createElement("div");
+release.setAttribute('data-role', 'collapsible');
+var cat = $(this).find('cat').text();
+var title = $(this).find('title:first').text();
+var artist = $(this).find('artist').text();
+var tracks = "";
+$(this).find('track').each(function(){
+tracks = tracks + $(this).find('title').text() + "<br>";
+});
+release.innerHTML = "<h3>" + title + " (" + cat + ")<br>" + artist + "</h3><p>" + tracks + "</p>";
+container.appendChild(release);
+
+});
+
+var catDiv = $('#catalogue');
+catDiv.find('div[data-role=collapsible]').collapsible({theme:'c',refresh:true});
+}
+});
+});
+
+</script>
+</head>
+<body>
+<div id="catalogue">
+</div>
+</body>
+</html>
